@@ -1,0 +1,20 @@
+- name: Deploy Docker Image from Docker Hub
+  hosts: productionservers
+  tasks:
+    - name: Log in to Docker Hub
+      docker_login:
+        username: sachinsebastian114
+        password: Sachin@6865
+
+    - name: Pull Docker image from Docker Hub
+      docker_image:
+        name: sachinsebastian114/projectdevops:latest
+        source: pull
+
+    - name: Run Docker container
+      docker_container:
+        name: production
+        image: sachinsebastian114/projectdevops:latest
+        state: started
+        ports:
+          - "80:80"
