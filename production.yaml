@@ -1,6 +1,25 @@
 - name: Deploy Docker Image from Docker Hub
   hosts: productionservers
+  gather_facts: false
+  remote_user: root
   tasks:
+    - name: Stopping the Container
+      docker_container:
+        name: production
+        image: sachinsebastian114/projectdevops:latest
+        state: stopped
+
+    - name: Removing the Container
+      docker_container:
+        name: production
+        image: sachinsebastian114/projectdevops:latest
+        state: absent
+
+    - name: Removing Docker Image
+      docker_image:
+        name: sachinsebastian114/projectdevops:latest
+        state: absent
+
     - name: Log in to Docker Hub
       docker_login:
         username: sachinsebastian114
