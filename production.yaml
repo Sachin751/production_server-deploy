@@ -6,18 +6,18 @@
     - name: Stopping the Container
       docker_container:
         name: production
-        image: sachinsebastian114/projectdevops:latest
+        image: sachinsebastian114/capstone:latest
         state: stopped
 
     - name: Removing the Container
       docker_container:
         name: production
-        image: sachinsebastian114/projectdevops:latest
+        image: sachinsebastian114/capstone:latest
         state: absent
 
     - name: Removing Docker Image
       docker_image:
-        name: sachinsebastian114/projectdevops:latest
+        name: sachinsebastian114/capstone:latest
         state: absent
 
     - name: Log in to Docker Hub
@@ -27,13 +27,13 @@
 
     - name: Pull Docker image from Docker Hub
       docker_image:
-        name: sachinsebastian114/projectdevops:latest
+        name: sachinsebastian114/capstone:latest
         source: pull
 
     - name: Run Docker container
       docker_container:
         name: production
-        image: sachinsebastian114/projectdevops:latest
+        image: sachinsebastian114/capstone:latest
         state: started
         ports:
           - "80:80"
