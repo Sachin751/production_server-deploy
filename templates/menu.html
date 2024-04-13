@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Menu - Chai Creamery</title>
+</head>
+<body>
+    <h1>Our Menu</h1>
+    <ul>
+        {% for item in menu_items %}
+        <li>{{ item.name }} - {{ item.price }}</li>
+        {% endfor %}
+    </ul>
+    <a href="{{ url_for('home') }}">Back to Home</a>
+    <a href="{{ url_for('contact') }}">Contact Us</a>
+</body>
+</html>
